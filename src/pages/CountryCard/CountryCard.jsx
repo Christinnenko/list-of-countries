@@ -59,14 +59,14 @@ function CountryCard() {
           <Card.Img
             variant="top"
             src={country.flags?.svg || 'Image of the flag is missing'}
-            alt={`Flag ${country.name.common}`}
+            alt={`Flag of ${country.name.common}`}
           />
           <Card.Body>
             <Card.Title className="text-center fw-bold">
               {country.name.common}
             </Card.Title>
             <Card.Text>
-              <span className="fw-bold">Official:</span>{' '}
+              <span className="fw-bold">Official name:</span>{' '}
               {country.name.official || '-'}
             </Card.Text>
             <Card.Text>
@@ -80,7 +80,9 @@ function CountryCard() {
           </Card.Body>
         </Card>
       ) : (
-        <p>The selected country was not found</p>
+        <div className="d-flex justify-content-center align-items-center vh-100">
+          <p>The selected country was not found</p>
+        </div>
       )}
     </div>
   );

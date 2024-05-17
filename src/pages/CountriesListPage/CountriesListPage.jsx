@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import CountryItem from '../../components/CountryItem/СountryItem.jsx';
+import CountryItem from '../../components/CountryItem/CountryItem.jsx';
 import PaginationBar from '../../components/PaginationBar/PaginationBar.jsx';
 import Loader from '../../components/Loader/Loader.jsx';
 
@@ -62,7 +62,7 @@ function CountriesListPage() {
       ) : (
         <>
           {error ? (
-            <div className="error-message">
+            <div className="error-message d-flex justify-content-center align-items-center vh-100">
               <p>An error occurred: {error}. Please try again later.</p>
             </div>
           ) : (
@@ -77,7 +77,7 @@ function CountriesListPage() {
             </div>
           )}
           {!isLoading && !error && countries.length === 0 && (
-            <div className="no-countries-message">
+            <div className="no-countries-message d-flex justify-content-center align-items-center vh-100">
               <p>
                 Unfortunately, the list of countries is empty. Please try again
                 later.
@@ -85,7 +85,7 @@ function CountriesListPage() {
             </div>
           )}
           <div className="mt-4">
-            {!error && (
+            {!error && countries.length > 0 && (
               <PaginationBar
                 countriesPerPage={countriesPerPage}
                 totalCountries={countries.length}
