@@ -20,11 +20,11 @@ function CountriesListPage() {
       try {
         const response = await fetch('https://restcountries.com/v3.1/all');
         if (!response.ok) {
-          throw new Error('Не удалось загрузить список стран');
+          throw new Error('Failed to load the list of countries');
         }
         const data = await response.json();
         if (data.length === 0) {
-          throw new Error('Получен пустой список стран');
+          throw new Error('Received an empty list of countries');
         }
         // Сортировка по алфавиту
         const sortedCountries = data.sort((a, b) =>
@@ -63,7 +63,7 @@ function CountriesListPage() {
         <>
           {error ? (
             <div className="error-message">
-              <p>Произошла ошибка: {error}. Пожалуйста, попробуйте позже.</p>
+              <p>An error occurred: {error}. Please try again later.</p>
             </div>
           ) : (
             <div className="w-100">
@@ -79,7 +79,8 @@ function CountriesListPage() {
           {!isLoading && !error && countries.length === 0 && (
             <div className="no-countries-message">
               <p>
-                К сожалению, список стран пуст. Пожалуйста, попробуйте позже.
+                Unfortunately, the list of countries is empty. Please try again
+                later.
               </p>
             </div>
           )}

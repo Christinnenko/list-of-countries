@@ -25,11 +25,11 @@ function CountryCard() {
           `https://restcountries.com/v3.1/name/${countryName}`,
         );
         if (!response.ok) {
-          throw new Error('Не удалось загрузить информацию о стране');
+          throw new Error('Failed to load country information');
         }
         const data = await response.json();
         if (data.length === 0) {
-          throw new Error('Страна не найдена');
+          throw new Error('Country not found');
         }
         setCountry(data[0]);
       } catch (error) {
@@ -44,8 +44,8 @@ function CountryCard() {
 
   if (error) {
     return (
-      <div>
-        <p>Произошла ошибка: {error}. Пожалуйста, попробуйте позже.</p>
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <p>An error occurred: {error}. Please try again later.</p>
       </div>
     );
   }
@@ -58,29 +58,29 @@ function CountryCard() {
         <Card style={{ width: '20rem' }}>
           <Card.Img
             variant="top"
-            src={country.flags?.svg || 'Изображение флага отсутствует'}
-            alt={`Флаг страны ${country.name.common}`}
+            src={country.flags?.svg || 'Image of the flag is missing'}
+            alt={`Flag ${country.name.common}`}
           />
           <Card.Body>
             <Card.Title className="text-center fw-bold">
               {country.name.common}
             </Card.Title>
             <Card.Text>
-              <span className="fw-bold">Официальное название:</span>{' '}
+              <span className="fw-bold">Official:</span>{' '}
               {country.name.official || '-'}
             </Card.Text>
             <Card.Text>
-              <span className="fw-bold">Столица:</span> {country.capital || '-'}
+              <span className="fw-bold">Capital:</span> {country.capital || '-'}
             </Card.Text>
             <div className="d-flex justify-content-center mt-4">
               <CustomButton onClick={handleGoHome}>
-                Вернуться на главную
+                Return to the main page
               </CustomButton>
             </div>
           </Card.Body>
         </Card>
       ) : (
-        <p>Выбранная страна не найдена</p>
+        <p>The selected country was not found</p>
       )}
     </div>
   );
