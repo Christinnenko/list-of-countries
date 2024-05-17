@@ -8,6 +8,11 @@
     "prettier",
     "plugin:react/jsx-runtime"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true

@@ -1,5 +1,5 @@
-import React from 'react'
-import Pagination from 'react-bootstrap/Pagination'
+import React from 'react';
+import Pagination from 'react-bootstrap/Pagination';
 
 function PaginationBar({
   countriesPerPage,
@@ -8,9 +8,9 @@ function PaginationBar({
   currentPage,
 }) {
   // Вычисляем общее количество страниц
-  const pageNumbers = []
+  const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalCountries / countriesPerPage); i++) {
-    pageNumbers.push(i)
+    pageNumbers.push(i);
   }
 
   return (
@@ -39,16 +39,16 @@ function PaginationBar({
             >
               {number}
             </Pagination.Item>
-          )
+          );
         } else if (number === currentPage - 2 || number === currentPage + 2) {
           return (
             <Pagination.Ellipsis
               key={number}
               onClick={() => paginate(number)}
             />
-          )
+          );
         } else {
-          return null
+          return null;
         }
       })}
       <Pagination.Next
@@ -60,7 +60,7 @@ function PaginationBar({
         disabled={currentPage === pageNumbers.length}
       />
     </Pagination>
-  )
+  );
 }
 
-export default PaginationBar
+export default PaginationBar;
